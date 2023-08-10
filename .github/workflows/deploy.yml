@@ -88,4 +88,4 @@ jobs:
       - name: Output contents
         run: ls
       - name: Deploy site
-        run: echo "Deploying..."
+        run: npm run dev
