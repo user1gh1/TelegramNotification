@@ -43,6 +43,14 @@ jobs:
         with:
           name: test-report
           path: test.json
+      - name: Telegram Notification
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_GROUP_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          args: Test Message
+
+
   build:
     needs: test
     runs-on: ubuntu-latest
