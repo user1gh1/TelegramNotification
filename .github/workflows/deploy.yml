@@ -44,6 +44,7 @@ jobs:
           name: test-report
           path: test.json
       - name: Telegram Notification
+        if: failure()
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_GROUP_ID }}
