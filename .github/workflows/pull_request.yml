@@ -26,10 +26,17 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
+      - name: create comment
       - uses: actions/github-script@v6
         id: set-result
         with:
-          script: return "Hello!"
-          result-encoding: string
+          github-token: $ {{ secrets.MY_TOKEN }}
+          script: |
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '👋 Thanks for reporting!'
+            })
       - name: Get result
         run: echo "${{steps.set-result.outputs.result}}"
