@@ -26,7 +26,6 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
-      - name: create comment
       - uses: actions/github-script@v6
         id: set-result
         with:
