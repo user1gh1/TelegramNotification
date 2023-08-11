@@ -37,5 +37,5 @@ jobs:
               repo: context.repo.repo,
               body: '👋 Thanks for reporting!'
             })
-      - name: Get result
-        run: echo "${{steps.set-result.outputs.result}}" #comment
+     # - name: Get result
+     #  run: echo "${{steps.set-result.outputs.result}}" #comment
