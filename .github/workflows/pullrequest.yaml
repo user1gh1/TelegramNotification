@@ -34,11 +34,12 @@ jobs:
         id: set-result
         with:
           script: |
-            const result = await github.rest.issues.createComment({
+            github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: '👋 Thanks for reporting!'
             })
+
      # - name: Get result
      #  run: echo "${{steps.set-result.outputs.result}}" #comment
