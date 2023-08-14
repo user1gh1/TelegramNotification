@@ -26,10 +26,14 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
+      - name: Get code
+        uses: actions/checkout@v3
+        with:
+            ref: ${{ github.event.pull_request.head.sha }}
       - uses: actions/github-script@v6
         id: set-result
         with:
-#           github-token: $ {{ secrets.MY_TOKEN }}
+          github-token: $ {{ secrets.MY_TOKEN }}
           script: |
             github.issues.createComment({
               issue_number: context.issue.number,
