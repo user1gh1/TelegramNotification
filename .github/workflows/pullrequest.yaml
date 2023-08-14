@@ -24,6 +24,7 @@ jobs:
       - name: Test code
         run: npm run test          
   comment:
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - name: Get code
