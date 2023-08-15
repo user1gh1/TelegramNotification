@@ -3,11 +3,9 @@ on:
   push:
     branches:
       - main
-defaults:
-  run:
-    continue-on-error: true
 
 jobs:
+  
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -80,6 +78,7 @@ jobs:
           name: dist-files
           path: dist
   deploy:
+    continue-on-error: true
     needs: build
     runs-on: ubuntu-latest
     timeout-minutes: 1
