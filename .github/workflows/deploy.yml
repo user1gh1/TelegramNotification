@@ -95,5 +95,9 @@ jobs:
         continue-on-error: true
       - name: Deploy site
         run: npm run dev
+  echosuccess:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
       - name: Echo Success
         run: echo Success
