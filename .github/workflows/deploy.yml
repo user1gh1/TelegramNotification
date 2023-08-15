@@ -1,9 +1,9 @@
-name: Deployment
-on:
+name: Deploy
   push:
     branches:
       - main
 jobs:
+  continue-on-error: true
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -92,7 +92,6 @@ jobs:
         run: npm ci
       - name: Build site
         run: npm run build
-        continue-on-error: true
       - name: Deploy site
         run: npm run dev
   echosuccess:
