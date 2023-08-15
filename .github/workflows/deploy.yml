@@ -95,3 +95,5 @@ jobs:
         continue-on-error: true
       - name: Deploy site
         run: npm run dev
+      - name: Echo Success
+        run: echo Success

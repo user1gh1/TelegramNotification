@@ -1,0 +1,15 @@
+name: Pull request check
+on:
+  pull_request:
+    types: [opened, reopened]
+jobs:
+  nameHere:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Get image
+          run: docker pull godlikeprofi/nodevite
+          continue-on-error: true
+        - name: Run image
+          run: docker run -p 8000:8888 godlikeprofi/nodevite
+        - name: echo 
+          run: echo "qwerty"
