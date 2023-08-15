@@ -38,12 +38,13 @@ jobs:
         id: run-tests
         run: npm run test
       - name: Upload test report
-        if: ${{ always() }} 
+        if: failure()
         uses: actions/upload-artifact@v3
         with:
           name: test-report
           path: test.json
       - name: Telegram Notification
+        if: failure()
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_GROUP_ID }}
@@ -77,6 +78,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 1
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -85,7 +87,13 @@ jobs:
         with:
           name: dist-files
           path: ./dist
-      - name: Output contents
-        run: ls
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Build site
+        run: npm run build
+        continue-on-error: true
       - name: Deploy site
-        run: echo "Deploying..."
+        run: npm run dev
+      - name: Echo Success
+        run: echo Success
