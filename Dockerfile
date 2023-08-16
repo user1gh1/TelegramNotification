@@ -4,8 +4,7 @@ WORKDIR /app
 
 COPY . /app
 
-RUN npm ci
-RUN npm run build
+RUN npm ci && npm run build && apk add bash
 
 EXPOSE 8888
 
