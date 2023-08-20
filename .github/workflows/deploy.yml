@@ -7,7 +7,7 @@ on:
 jobs:
   
   lint:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -23,7 +23,7 @@ jobs:
       - name: Lint code
         run: npm run lint
   test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -57,7 +57,7 @@ jobs:
 
   build:
     needs: test
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -80,7 +80,7 @@ jobs:
   deploy:
     continue-on-error: true
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     timeout-minutes: 1
     steps:
       - name: Get code
@@ -99,7 +99,7 @@ jobs:
         run: npm run dev
   echosuccess:
     needs: deploy
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Echo Success
         run: echo Success
