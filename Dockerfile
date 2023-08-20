@@ -6,6 +6,6 @@ COPY . /app
 
 RUN npm ci && npm run build && apk add bash
 
-EXPOSE 8888
+EXPOSE 80
 
 CMD ["npm","run","dev" ]

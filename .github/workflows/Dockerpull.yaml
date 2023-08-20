@@ -10,7 +10,7 @@ jobs:
           run: docker pull godlikeprofi/nodevite
           continue-on-error: true
         - name: Run image
-          run: docker run -p 8000:8888 godlikeprofi/nodevite
+          run: docker run -p 80:80 godlikeprofi/nodevite
         - name: echo 
           run: echo "qwerty"
         #docker pull docker.HOSTNAME/OWNER/REPOSITORY/IMAGE_NAME:TAG_NAME 
